@@ -1,15 +1,15 @@
 class Player {
     constructor(canvasConfig) {
-        this.cvs = canvasConfig.cvs; // pobranie wartości cvs z gettera 
-        this.ctx = canvasConfig.ctx; // pobranie wartości ctx z gettera 
-        this.rightPressed = false; // czy prawa strzałka jest obecnie wciśnięta
-        this.leftPressed = false; // czy lewa strzałka jest obecnie wciścnięta
+        this.cvs = canvasConfig.cvs;
+        this.ctx = canvasConfig.ctx;
+        this.rightPressed = false;
+        this.leftPressed = false;
         this.upPressed = false;
         this.downPressed = false;
         this.playerSize = 20;
         this.playerSpeed = 3;
     }
-    drawPlayer() { // rysowanie gracza
+    drawPlayer() {
         ctx.beginPath();
         ctx.rect(x, y, this.playerSize, this.playerSize);
         ctx.fillStyle = "#000000";
@@ -22,13 +22,13 @@ class Player {
         ctx.closePath();
      }
     
-    getPlayerConfig() { // getter zwracający playerSize do innych klas
+    getPlayerConfig() { // this getter returns playerSize to other classes
         let playerConfig = {
             playerSize: this.playerSize,                 
         };
         return playerConfig;
     };
-    changePosition() { //porusznie sie gracza
+    changePosition() {
         if (this.rightPressed && x < cvs.width - this.playerSize) {
             x += this.playerSpeed;
         }
