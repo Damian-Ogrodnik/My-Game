@@ -28,7 +28,7 @@ class Player {
         };
         return playerConfig;
     };
-    movePlayer() { //porusznie sie gracza
+    changePosition() { //porusznie sie gracza
         if (this.rightPressed && x < cvs.width - this.playerSize) {
             x += this.playerSpeed;
         }
@@ -42,45 +42,23 @@ class Player {
             y += this.playerSpeed;
         }
     };
-    move(key, type){
-        console.log(type)
-        console.log(key)
+    playerMove(key, type){
         switch(key){
             case 'ArrowRight':
-                if ( type == 'keydown'){
-                    this.rightPressed = true
-                    player.movePlayer()
-                } else {
-                    this.rightPressed = false
-                    player.movePlayer()
-                }
+                (type == 'keydown') ? this.rightPressed = true: this.rightPressed = false;
+                player.changePosition()
                 break;
             case 'ArrowLeft':
-                if (type == 'keydown') {
-                    this.leftPressed = true
-                    player.movePlayer()
-                } else {
-                    this.leftPressed = false
-                    player.movePlayer()
-                }
+                (type == 'keydown') ? this.leftPressed = true: this.leftPressed = false;
+                player.changePosition()
                 break;
             case 'ArrowUp':
-                if (type == 'keydown') {
-                    this.upPressed = true
-                    player.movePlayer()
-                } else {
-                    this.upPressed = false
-                    player.movePlayer()
-                }
+                (type == 'keydown') ? this.upPressed = true: this.upPressed = false;
+                player.changePosition()
                 break;
             case 'ArrowDown':
-                if ( type == 'keydown'){
-                    this.downPressed = true
-                    player.movePlayer()
-                } else {
-                    this.downPressed = false
-                    player.movePlayer()
-                }
+                (type == 'keydown') ? this.downPressed = true: this.downPressed = false;
+                player.changePosition()
                 break;
         }
     }
