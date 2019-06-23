@@ -1,12 +1,12 @@
 class Lost {
     constructor(canvasConfig) {
-        this.cvs = canvasConfig.cvs; // pobranie wartości cvs z gettera 
-        this.ctx = canvasConfig.ctx; // pobranie wartości ctx z gettera 
+        this.cvs = canvasConfig.cvs;
+        this.ctx = canvasConfig.ctx;
     }
-    lostFunction() { // KONIEC GRY
+    lostFunction() { // GAME OVER
         clearInterval(interval);
-        this.cvs = document.querySelector('#myCanvas'); // odniesienie się do elementu o id myCanvas w htmlu
-        this.ctx = this.cvs.getContext('2d'); //nadanie contextu
+        this.cvs = document.querySelector('#myCanvas');
+        this.ctx = this.cvs.getContext('2d'); 
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, cvs.width, cvs.height);
         ctx.font = "bold 45px Courier New";

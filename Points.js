@@ -1,17 +1,17 @@
 class Points {
     constructor(canvasConfig, playerConfig) { 
-        this.cvs = canvasConfig.cvs; // pobranie wartości cvs z gettera 
-        this.ctx = canvasConfig.ctx; // pobranie wartości ctx z gettera
-        this.playerSize = playerConfig.playerSize; // rozmiar gracza z gettera players
-        this.pointSize = 10;  //rozmiar point
-        this.pointX = Math.random() * (this.cvs.width-this.pointSize); //miejsce point na osi x
-        this.pointY = Math.random() * (this.cvs.height-this.pointSize); //miejsce poiny na osi y
+        this.cvs = canvasConfig.cvs; 
+        this.ctx = canvasConfig.ctx;
+        this.playerSize = playerConfig.playerSize;
+        this.pointSize = 100;
+        this.pointX = Math.random() * (this.cvs.width-this.pointSize);
+        this.pointY = Math.random() * (this.cvs.height-this.pointSize);
         this.point = false;
     }
-    drawPoint(newPoint){ //nanosi punkt na canvas
+    drawPoint(newPoint){ 
         if (newPoint){
-            this.pointX = Math.random() * (this.cvs.width - this.pointSize); //miejsce point na osi x
-            this.pointY = Math.random() * (this.cvs.height - this.pointSize); //miejsce poiny na osi y
+            this.pointX = Math.random() * (this.cvs.width - this.pointSize);
+            this.pointY = Math.random() * (this.cvs.height - this.pointSize);
         }
         ctx.rect(this.pointX, this.pointY, this.pointSize, this.pointSize);
         ctx.fillStyle = "#000000";
@@ -23,10 +23,10 @@ class Points {
         ctx.fill();
         ctx.closePath();
     }
-    pointDetector() { //określa czy gracz wszedł w punkt, 
+    pointDetector() { //specify the contact between player and point
         if (x + this.playerSize > this.pointX && x < this.pointX + this.pointSize && y + this.playerSize > this.pointY && y < this.pointY + this.pointSize) {
             score++;
-            if (score % 2 == 0){enemies.createEnemy();}
+            if (score % 1 == 0){enemies.createEnemy();}
             this.drawPoint('true');
         }
     }
@@ -34,6 +34,7 @@ class Points {
         let pointConfig = {
             pointX: this.pointX,
             pointY: this.pointY,
+            pointSize: this.pointSize,
         };
         return pointConfig;
     };

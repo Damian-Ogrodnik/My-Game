@@ -1,9 +1,9 @@
 class Canvas {
     constructor() {
-        this.cvs = document.querySelector('#myCanvas'); // odniesienie się do elementu o id myCanvas w htmlu
-        this.ctx = this.cvs.getContext('2d'); //nadanie contextu
+        this.cvs = document.querySelector('#myCanvas'); // reference to id myCanvas in  htmlu
+        this.ctx = this.cvs.getContext('2d'); //set context
     }
-    getCanvasConfig() { // getter zwracający this.cvs i this.ctx
+    getCanvasConfig() { // getter with returns cvs and ctx
         let canvasConfig = {
             cvs: this.cvs,
             ctx: this.ctx

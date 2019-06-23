@@ -1,5 +1,6 @@
 //TO DO
-// -poprawic model kolizji
+// -ZMIENIC MODEL KOLIZJI PRZECIWNIKOW
+//-zmienic wyglad gracza
 // -zrobic ekran startowy
 // - dodac bloki odbijajaca
 
@@ -21,9 +22,8 @@ const start = () => {
      points.drawPoint();
      points.pointDetector();
      enemies.drawEnemies();
-     enemies.enemiesMove(points.getPointConfig());
-     enemies.enemiesPlayer();
-     enemies.enemiesCollision();
+     enemies.enemiesMove();
+     enemies.collisonModel(points.getPointConfig());
      document.querySelector("#score span").innerText = score;
 };
 
