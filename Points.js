@@ -3,7 +3,7 @@ class Points {
         this.cvs = canvasConfig.cvs; 
         this.ctx = canvasConfig.ctx;
         this.playerSize = playerConfig.playerSize;
-        this.pointSize = 100;
+        this.pointSize = 10;
         this.pointX = Math.random() * (this.cvs.width-this.pointSize);
         this.pointY = Math.random() * (this.cvs.height-this.pointSize);
         this.point = false;
