@@ -4,6 +4,7 @@ class Enemies {
         this.ctx = canvasConfig.ctx;
         this.playerSize = playerConfig.playerSize;
         this.enemies = []; //this array contains information about enemies
+        this.enemyHitSound = new Sound("./Sounds/enemyHit.mp3");
     }
     createEnemy() {
         let dx = 1; // enemy speed
@@ -61,7 +62,6 @@ class Enemies {
     }
     collisonModel(pointConfig) {
         for (let i = 0; i < this.enemies.length; i++) {
-            console.log(1)
             this.playerCollision(i)
             this.pointCollision(pointConfig, i)
             this.wallCollision(i)
@@ -71,6 +71,7 @@ class Enemies {
 
     playerCollision(i) { // PLAYER COLLISION
         if (x + this.playerSize > this.enemies[i].x && x < this.enemies[i].x + this.enemies[i].enemysize && y + this.playerSize > this.enemies[i].y && y < this.enemies[i].y + this.enemies[i].enemysize) {
+            this.enemyHitSound.play();
             lost.lostFunction()
         }
     }

@@ -1,5 +1,5 @@
 //TO DO
-// -ZMIENIC MODEL KOLIZJI PRZECIWNIKOW
+// - doadac feature jako np przyspieszenie czy cos takiego
 //-zmienic wyglad gracza
 // -zrobic ekran startowy
 // - dodac bloki odbijajaca
