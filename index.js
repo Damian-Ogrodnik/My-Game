@@ -1,17 +1,19 @@
 //TO DO
-// - doadac feature jako np przyspieszenie czy cos takiego
+// - dodac bloki:
+//////-przerobic funkcje kolizji punktu aby odbijala od bloku przeciwnikow
 //-zmienic wyglad gracza
 // -zrobic ekran startowy
 // - dodac bloki odbijajaca
 
 let score = 0;
 const canvas = new Canvas();
+const {ctx,cvs} = canvas.getCanvasConfig();
 const player = new Player(canvas.getCanvasConfig());
 const points = new Points(canvas.getCanvasConfig(), player.getPlayerConfig());
 const enemies = new Enemies(canvas.getCanvasConfig(), player.getPlayerConfig());
 const startDisplay = new Start(canvas.getCanvasConfig());
 const lost = new Lost(canvas.getCanvasConfig());
-const {ctx,cvs} = canvas.getCanvasConfig();
+const block = new Block(canvas.getCanvasConfig(), player.getPlayerConfig());
 let x = cvs.width / 2; // PLAYER X POSITION
 let y = cvs.height / 2; // PLAYER Y POSITION
 
@@ -21,6 +23,7 @@ const start = () => {
      player.drawPlayer();
      points.drawPoint();
      points.pointDetector();
+     block.blockModel();
      enemies.drawEnemies();
      enemies.enemiesMove();
      enemies.collisonModel(points.getPointConfig());
