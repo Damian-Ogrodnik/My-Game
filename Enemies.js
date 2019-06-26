@@ -62,7 +62,7 @@ class Enemies {
     }
     collisonModel(pointConfig) {
         for (let i = 0; i < this.enemies.length; i++) {
-            this.playerCollision(i)
+            //this.playerCollision(i)
             this.pointCollision(pointConfig, i)
             this.wallCollision(i)
             this.enemiesCollision(i)
