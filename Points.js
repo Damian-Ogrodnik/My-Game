@@ -28,7 +28,7 @@ class Points {
     pointDetector() { //specify the contact between player and point
         if (x + this.playerSize > this.pointX && x < this.pointX + this.pointSize && y + this.playerSize > this.pointY && y < this.pointY + this.pointSize) {
             score++;
-            if (score % 1 == 0){enemies.createEnemy();}
+            if (score % 2 == 0){enemies.createEnemy();}
             block.createBlock();
             this.pointSound.play();
             this.drawPoint('true');

@@ -62,8 +62,9 @@ class Enemies {
     }
     collisonModel(pointConfig) {
         for (let i = 0; i < this.enemies.length; i++) {
-            //this.playerCollision(i)
-            this.pointCollision(pointConfig, i)
+            this.playerCollision(i)
+            this.staticPointCollision(pointConfig.pointX, pointConfig.pointY, pointConfig.pointSize, pointConfig.pointSize, this.enemies[i].x, this.enemies[i].y, this.enemies[i].enemysize, i)
+            this.blockEnemiesCollision(block.getBlocks(), i)
             this.wallCollision(i)
             this.enemiesCollision(i)
         }
@@ -73,40 +74,6 @@ class Enemies {
         if (x + this.playerSize > this.enemies[i].x && x < this.enemies[i].x + this.enemies[i].enemysize && y + this.playerSize > this.enemies[i].y && y < this.enemies[i].y + this.enemies[i].enemysize) {
             this.enemyHitSound.play();
             lost.lostFunction()
-        }
-    }
-    pointCollision(pointConfig, i) {
-        //UP
-        let up = pointConfig.pointX + 2;
-        if (this.enemies[i].x + this.enemies[i].enemysize > up && pointConfig.pointX < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX + pointConfig.pointSize > this.enemies[i].x && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx < 0 && this.enemies[i].dy > 0) {
-            this.enemies[i].dy = -this.enemies[i].dy
-        }
-        if (this.enemies[i].x + this.enemies[i].enemysize > up && pointConfig.pointX < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX + pointConfig.pointSize > this.enemies[i].x && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx > 0 && this.enemies[i].dy > 0) {
-            this.enemies[i].dy = -this.enemies[i].dy
-        }
-        //LEFT
-        let left = pointConfig.pointX - 2;
-        if (left < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX > this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx > 0 && this.enemies[i].dy > 0) {
-            this.enemies[i].dx = -this.enemies[i].dx
-        }
-        if (left < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX > this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx > 0 && this.enemies[i].dy < 0) {
-            this.enemies[i].dx = -this.enemies[i].dx
-        }
-        //RIGHT
-        let right = pointConfig.pointX + pointConfig.pointSize + 2;
-        if (this.enemies[i].x < right && pointConfig.pointX + pointConfig.pointSize < this.enemies[i].x && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx < 0 && this.enemies[i].dy > 0) {
-            this.enemies[i].dx = -this.enemies[i].dx
-        }
-        if (this.enemies[i].x < right && pointConfig.pointX + pointConfig.pointSize < this.enemies[i].x && pointConfig.pointY < this.enemies[i].y + this.enemies[i].enemysize && pointConfig.pointY + pointConfig.pointSize > this.enemies[i].y && this.enemies[i].dx < 0 && this.enemies[i].dy < 0) {
-            this.enemies[i].dx = -this.enemies[i].dx
-        }
-        //DOWN
-        let down = pointConfig.pointY + pointConfig.pointSize + 2;
-        if (pointConfig.pointX < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX + pointConfig.pointSize > this.enemies[i].x && pointConfig.pointY + pointConfig.pointSize < this.enemies[i].y && down > this.enemies[i].y && this.enemies[i].dx < 0 && this.enemies[i].dy < 0) {
-            this.enemies[i].dy = -this.enemies[i].dy
-
-        } else if (pointConfig.pointX < this.enemies[i].x + this.enemies[i].enemysize && pointConfig.pointX + pointConfig.pointSize > this.enemies[i].x && pointConfig.pointY + pointConfig.pointSize < this.enemies[i].y && down > this.enemies[i].y && this.enemies[i].dx > 0 && this.enemies[i].dy < 0) {
-            this.enemies[i].dy = this.enemies[i].dx
         }
     }
     wallCollision(i) {
@@ -151,5 +118,44 @@ class Enemies {
         let b = y1 - y2;
         let c = Math.sqrt(a * a + b * b);
         return c;
+    }
+    blockEnemiesCollision(blockArray, enemyNumber){
+        for (let i = 0; i < blockArray.length; i++) {
+            this.staticPointCollision(blockArray[i].blockX, blockArray[i].blockY, blockArray[i].blockSizeX, blockArray[i].blockSizeY, this.enemies[enemyNumber].x, this.enemies[enemyNumber].y, this.enemies[enemyNumber].enemysize, enemyNumber)
+        }
+    }
+    staticPointCollision(pointX, pointY, sizeX, sizeY, enemyX, enemyY, enemySize, i) {
+        //UP
+        let up = pointX + 2;
+        if (enemyX + enemySize > up && pointX < enemyX + enemySize && pointX + sizeX > enemyX && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx < 0 && this.enemies[i].dy > 0) {
+            this.enemies[i].dy = -this.enemies[i].dy
+        }
+        if (enemyX + enemySize > up && pointX < enemyX + enemySize && pointX + sizeX > enemyX && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx > 0 && this.enemies[i].dy > 0) {
+            this.enemies[i].dy = -this.enemies[i].dy
+        }
+        //LEFT
+        let left = pointX - 2;
+        if (left < enemyX + enemySize && pointX > enemyX + enemySize && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx > 0 && this.enemies[i].dy > 0) {
+            this.enemies[i].dx = -this.enemies[i].dx
+        }
+        if (left < enemyX + enemySize && pointX > enemyX + enemySize && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx > 0 && this.enemies[i].dy < 0) {
+            this.enemies[i].dx = -this.enemies[i].dx
+        }
+        //RIGHT
+        let right = pointX + sizeX + 2;
+        if (enemyX < right && pointX + sizeX < enemyX && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx < 0 && this.enemies[i].dy > 0) {
+            this.enemies[i].dx = -this.enemies[i].dx
+        }
+        if (enemyX < right && pointX + sizeX < enemyX && pointY < enemyY + enemySize && pointY + sizeY > enemyY && this.enemies[i].dx < 0 && this.enemies[i].dy < 0) {
+            this.enemies[i].dx = -this.enemies[i].dx
+        }
+        //DOWN
+        let down = pointY + sizeY + 2;
+        if (pointX < enemyX + enemySize && pointX + sizeX > enemyX && pointY + sizeY < enemyY && down > enemyY && this.enemies[i].dx < 0 && this.enemies[i].dy < 0) {
+            this.enemies[i].dy = -this.enemies[i].dy
+
+        } else if (pointX < enemyX + enemySize && pointX + sizeX > enemyX && pointY + sizeY < enemyY && down > enemyY && this.enemies[i].dx > 0 && this.enemies[i].dy < 0) {
+            this.enemies[i].dy = this.enemies[i].dx
+        }
     }
 }

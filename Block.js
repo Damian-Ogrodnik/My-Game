@@ -1,7 +1,9 @@
 class Block {
-    constructor(canvasConfig, playerConfig) {
+    constructor(canvasConfig, playerConfig, pointConfig) {
         this.cvs = canvasConfig.cvs;
         this.ctx = canvasConfig.ctx;
+        this.pointX = pointConfig.pointX
+        this.pointY = pointConfig.pointY
         this.playerSize = playerConfig.playerSize;
         this.blocks = [];
     }
@@ -30,11 +32,20 @@ class Block {
             blockSizeX = 10
             blockSizeY = Math.floor(Math.random() * 30) + 20
         } else {
-            blockSizeX = Math.floor(Math.random() * 30) + 20
             blockSizeY = 10
+            blockSizeX = Math.floor(Math.random() * 30) + 20
         }
         let blockX = Math.random() * (this.cvs.width - blockSizeX);
         let blockY = Math.random() * (this.cvs.height - blockSizeY);
+        for (let i = 0; i < this.blocks.length; i++) {
+            if (
+                (this.getDistance(blockX, blockY, this.blocks[i].blockX, this.blocks[i].blockY)< 30 ) ||
+                (this.getDistance(x, y, this.blocks[i].blockX, this.blocks[i].blockY) < 30  ) ||
+                (this.getDistance(this.pointX, this.pointY, this.blocks[i].blockX, this.blocks[i].blockY) < 30)
+                ) {
+                return;
+            }
+        }
         let blockInfo = { //info about enemies
             blockX: blockX,
             blockY: blockY,
@@ -58,7 +69,13 @@ class Block {
             }
         }
     }
-    getBlockConfig() { // this getter returns playerSize to other classes
+    getDistance(x1, y1, x2, y2) {
+        let a = x1 - x2;
+        let b = y1 - y2;
+        let c = Math.sqrt(a * a + b * b);
+        return c;
+    }
+    getBlockConfig() { // this getter returns blocksconfigs to other classes
         let pointConfig = {
             blockX: this.blockX,
             blockY: this.blockY,
@@ -66,5 +83,9 @@ class Block {
             blockSizeY: this.blockSizeY,
         };
         return pointConfig;
+    };
+    getBlocks() { // this getter returns playerSize to other classes
+        let blocksConfig = this.blocks
+        return blocksConfig;
     };
 }
