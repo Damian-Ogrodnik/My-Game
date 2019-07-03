@@ -9,10 +9,18 @@ class Points {
         this.point = false;
         this.pointSound = new Sound("./Sounds/getPoint.wav");
     }
-    drawPoint(newPoint){ 
+    drawPoint(newPoint){
+        let blocks = block.getBlocks();
+        //console.log(blocks) 
         if (newPoint){
             this.pointX = Math.random() * (this.cvs.width - this.pointSize);
             this.pointY = Math.random() * (this.cvs.height - this.pointSize);
+            for (let i = 0; i < blocks.length; i++) { //check if point is to close to blocks
+                if (block.getDistance(this.pointX, this.pointY, blocks[i].blockX, blocks[i].blockY)< 40){
+                    console.log('za blisko')
+                    this.drawPoint('true')
+                }
+            }
         }
         ctx.beginPath();
         ctx.rect(this.pointX, this.pointY, this.pointSize, this.pointSize);

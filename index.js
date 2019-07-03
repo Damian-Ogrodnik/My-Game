@@ -1,5 +1,6 @@
 //TO DO
 // -create start screen
+// - repair enemy-enemy collison model
 
 let score = 0;
 const canvas = new Canvas();
