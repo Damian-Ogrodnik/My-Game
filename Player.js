@@ -28,38 +28,52 @@ class Player {
         };
         return playerConfig;
     };
-    changePosition() {
+    changePosition(speed) {
         if (this.rightPressed && x < cvs.width - this.playerSize) {
-            x += this.playerSpeed;
+            x += speed;
         }
         if (this.leftPressed && x > 0) {
-            x -= this.playerSpeed;
+            x -= speed;
         }
         if (this.upPressed && y > 0) {
-            y -= this.playerSpeed;
+            y -= speed;
         }
         if (this.downPressed && y < cvs.height - this.playerSize) {
-            y += this.playerSpeed;
+            y += speed;
         }
     };
     playerMove(key, type){
         switch(key){
             case 'ArrowRight':
                 (type == 'keydown') ? this.rightPressed = true: this.rightPressed = false;
-                player.changePosition()
+                player.changePosition(this.playerSpeed)
+                console.log(this.playerSpeed)
                 break;
             case 'ArrowLeft':
                 (type == 'keydown') ? this.leftPressed = true: this.leftPressed = false;
-                player.changePosition()
+                player.changePosition(this.playerSpeed)
+                console.log(this.playerSpeed)
                 break;
             case 'ArrowUp':
                 (type == 'keydown') ? this.upPressed = true: this.upPressed = false;
-                player.changePosition()
+                player.changePosition(this.playerSpeed)
+                console.log(this.playerSpeed)
                 break;
             case 'ArrowDown':
                 (type == 'keydown') ? this.downPressed = true: this.downPressed = false;
-                player.changePosition()
+                player.changePosition(this.playerSpeed)
+                console.log(this.playerSpeed)
                 break;
         }
+    }
+    increaseSize(){
+        this.playerSize = 10;
+    }
+    async decreaseSize() {
+        await this.sleep(10000)
+        this.playerSize = 20;
+    }
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

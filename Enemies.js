@@ -1,5 +1,5 @@
 class Enemies {
-    constructor(canvasConfig, playerConfig, pointConfig) {
+    constructor(canvasConfig, playerConfig) {
         this.cvs = canvasConfig.cvs;
         this.ctx = canvasConfig.ctx;
         this.playerSize = playerConfig.playerSize;
@@ -60,10 +60,12 @@ class Enemies {
             this.enemies[i].y += this.enemies[i].dy;
         }
     }
-    collisonModel(pointConfig) {
+    collisonModel(pointConfig, boosterConfig) {
+        boosterConfig = booster.getBoosterConfig();
         for (let i = 0; i < this.enemies.length; i++) {
             this.playerCollision(i)
             this.staticPointCollision(pointConfig.pointX, pointConfig.pointY, pointConfig.pointSize, pointConfig.pointSize, this.enemies[i].x, this.enemies[i].y, this.enemies[i].enemysize, i)
+            this.staticPointCollision(boosterConfig.boosterX, boosterConfig.boosterY, boosterConfig.boosterSize, boosterConfig.boosterSize, this.enemies[i].x, this.enemies[i].y, this.enemies[i].enemysize, i)
             this.blockEnemiesCollision(block.getBlocks(), i)
             this.wallCollision(i)
             this.enemiesCollision(i)

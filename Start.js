@@ -9,16 +9,16 @@ class Start {
         this.ctx = this.cvs.getContext('2d'); //nadanie contextu
         ctx.fillStyle = "black";
         ctx.fillRect(0, 0, cvs.width, cvs.height);
-        ctx.font = "30px Comic Sans MS";
-        ctx.fillStyle = "yellow";
+        ctx.font = "bold 45px Courier New";
+        ctx.fillStyle = "#FFD700";
         ctx.textAlign = "center";
-        ctx.fillText("Kliknij aby zacząć", cvs.width / 2, cvs.height / 2);
-        ctx.font = "15px Comic Sans MS";
-        ctx.fillStyle = "yellow";
+        ctx.fillText("Click to play", cvs.width / 2, cvs.height / 2);
+        ctx.font = "20px Courier New";
+        ctx.fillStyle = "#FFD700";
         ctx.textAlign = "center";
-        ctx.fillText("Używaj strzałek do poruszania", cvs.width / 2, cvs.height / 2 + 30);
+        ctx.fillText("Use arrows to move", cvs.width / 2, cvs.height / 2 + 30);
         let elem = document.getElementById('body');
-        elem.addEventListener('keypress', () => {return za = 1})
-        elem.addEventListener('click', () => {return za = 1})
+        elem.addEventListener('keypress', () => {startGame()})
+        elem.addEventListener('click', () => {startGame()})
     }
 }
