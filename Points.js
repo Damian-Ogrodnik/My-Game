@@ -34,6 +34,7 @@ class Points {
         if (x + this.playerSize > this.pointX && x < this.pointX + this.pointSize && y + this.playerSize > this.pointY && y < this.pointY + this.pointSize) {
             score++;
             if (score % 2 == 0){enemies.createEnemy();}
+            if (score % 4 == 0){booster.drawBooster('true')}
             block.createBlock();
             this.pointSound.play();
             this.drawPoint('true');

@@ -35,7 +35,7 @@ class Booster {
             this.boosterSound.play();
             player.increaseSpeed();
             player.decreaseSpeed();
-            this.drawBooster('true');
+            this.deleteBooster();
         }
     }
     getBoosterConfig() {
@@ -45,5 +45,9 @@ class Booster {
             boosterSize: this.boosterSize,
         };
         return boosterConfig;
+    }
+    deleteBooster(){
+        this.boosterX = -20;
+        this.boosterY = -20;
     }
 }

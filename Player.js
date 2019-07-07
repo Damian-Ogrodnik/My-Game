@@ -47,22 +47,18 @@ class Player {
             case 'ArrowRight':
                 (type == 'keydown') ? this.rightPressed = true: this.rightPressed = false;
                 player.changePosition(this.playerSpeed)
-                console.log(this.playerSpeed)
                 break;
             case 'ArrowLeft':
                 (type == 'keydown') ? this.leftPressed = true: this.leftPressed = false;
                 player.changePosition(this.playerSpeed)
-                console.log(this.playerSpeed)
                 break;
             case 'ArrowUp':
                 (type == 'keydown') ? this.upPressed = true: this.upPressed = false;
                 player.changePosition(this.playerSpeed)
-                console.log(this.playerSpeed)
                 break;
             case 'ArrowDown':
                 (type == 'keydown') ? this.downPressed = true: this.downPressed = false;
                 player.changePosition(this.playerSpeed)
-                console.log(this.playerSpeed)
                 break;
         }
     }

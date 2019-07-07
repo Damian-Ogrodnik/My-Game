@@ -1,8 +1,4 @@
-//TO DO
-// -create start screen
-// - repair enemy-enemy collison model
 let score = 0;
-game = 0 
 const canvas = new Canvas();
 const {ctx,cvs} = canvas.getCanvasConfig();
 const startScreen = new Start(canvas.getCanvasConfig());
@@ -22,9 +18,9 @@ const start = () => {
      player.drawPlayer();
      points.drawPoint();
      booster.drawBooster();
-     block.blockModel();
      points.pointDetector();
      booster.boosterDetector();
+     block.blockModel();
      enemies.drawEnemies();
      enemies.enemiesMove();
      enemies.collisonModel(points.getPointConfig(), booster.getBoosterConfig());
@@ -33,15 +29,9 @@ const start = () => {
 
 //INTERVAL FOR GAME LOOP
 startScreen.startScreen()
-function startGame(){
-     game = game + 1
-     console.log(game)
-     gameS(game)
-}
-function gameS(ct){
-     if (ct > 0) {
+
+function gameStart(){
           window.interval = setInterval(start, 15)
-     }
 }
 // PLAYER MOVE
 document.addEventListener('keydown', (e) => {
