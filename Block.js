@@ -56,16 +56,16 @@ class Block {
     }
     playerCollision(blockX, blockY, blockSizeX, blockSizeY){
         if (x + this.playerSize > blockX && x < blockX + blockSizeX && y + this.playerSize > blockY && y < blockY + blockSizeY) {
-            if (y > blockY + blockSizeY - 5) {
-                y = y + 2
+            if (y > blockY + blockSizeY - 6) {
+                y = y + 6
             }
-            if (y + this.playerSize - 5 < blockY){
-                    y = y - 2
+            if (y + this.playerSize - 6 < blockY){
+                    y = y - 6
                 }
-            if (x + this.playerSize - 5 < blockX ) {
-                    x = x - 2}
-            if (x > blockX + blockSizeX - 5) {
-                x = x + 2
+            if (x + this.playerSize - 6 < blockX ) {
+                    x = x - 6}
+            if (x > blockX + blockSizeX - 6) {
+                x = x + 6
             }
         }
     }

@@ -33,8 +33,8 @@ class Booster {
     boosterDetector() {
         if (x + this.playerSize > this.boosterX && x < this.boosterX + this.boosterSize && y + this.playerSize > this.boosterY && y < this.boosterY + this.boosterSize) {
             this.boosterSound.play();
-            player.increaseSize();
-            player.decreaseSize();
+            player.increaseSpeed();
+            player.decreaseSpeed();
             this.drawBooster('true');
         }
     }

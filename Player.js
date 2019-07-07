@@ -66,12 +66,12 @@ class Player {
                 break;
         }
     }
-    increaseSize(){
-        this.playerSize = 10;
+    increaseSpeed(){
+        this.playerSpeed = 6;
     }
-    async decreaseSize() {
+    async decreaseSpeed() {
         await this.sleep(10000)
-        this.playerSize = 20;
+        this.playerSpeed = 3;
     }
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
