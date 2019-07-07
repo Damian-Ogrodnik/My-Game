@@ -17,7 +17,7 @@ const start = () => {
      ctx.clearRect(0, 0, cvs.width, cvs.height); //canvas clearing
      player.drawPlayer();
      points.drawPoint();
-     booster.drawBooster();
+     booster.drawBooster(false);
      points.pointDetector();
      booster.boosterDetector();
      block.blockModel();
