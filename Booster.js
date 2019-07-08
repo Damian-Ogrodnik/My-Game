@@ -35,6 +35,7 @@ class Booster {
             this.boosterSound.play();
             player.increaseSpeed();
             player.decreaseSpeed();
+            this.timeDiv()
             this.deleteBooster();
         }
     }
@@ -49,5 +50,12 @@ class Booster {
     deleteBooster(){
         this.boosterX = -20;
         this.boosterY = -20;
+    }
+    timeDiv(){
+        let div = document.createElement("H1")
+        div.id = 'timeDiv'
+        div.style.backgroundImage = "linear-gradient(to bottom right, #FFD700, #272100)"
+        const main = document.getElementById('body')
+        main.appendChild(div)
     }
 }
