@@ -52,10 +52,22 @@ class Booster {
         this.boosterY = -20;
     }
     timeDiv(){
-        let div = document.createElement("H1")
-        div.id = 'timeDiv'
-        div.style.backgroundImage = "linear-gradient(to bottom right, #FFD700, #272100)"
+        let timeDiv = document.createElement("H1")
+        timeDiv.id = 'timeDiv'
+        timeDiv.style.backgroundImage = "linear-gradient(to bottom right, #FFD700, #272100)"
         const main = document.getElementById('body')
-        main.appendChild(div)
+        main.appendChild(timeDiv)
+        this.reduceWidth()
+    }
+    async reduceWidth(){
+        let timeDiv = document.getElementById('timeDiv')
+        for (let i = 0; i < 900; i++){
+            await this.sleep(9)
+            timeDiv.style.width = `${490- i*0.5}px`
+        }
+        timeDiv.remove()
+    }
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

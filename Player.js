@@ -66,7 +66,7 @@ class Player {
         this.playerSpeed = 6;
     }
     async decreaseSpeed() {
-        await this.sleep(10000)
+        await this.sleep(9000)
         this.playerSpeed = 3;
     }
     sleep(ms) {

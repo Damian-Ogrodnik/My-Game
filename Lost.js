@@ -4,6 +4,10 @@ class Lost {
         this.ctx = canvasConfig.ctx;
     }
     lostFunction() { // GAME OVER
+        let timeDiv = document.getElementById("timeDiv")
+        if (timeDiv){
+            timeDiv.remove();
+        }
         clearInterval(interval);
         this.cvs = document.querySelector('#myCanvas');
         this.ctx = this.cvs.getContext('2d'); 
