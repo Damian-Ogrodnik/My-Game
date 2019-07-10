@@ -35,7 +35,7 @@ class Booster {
             this.boosterSound.play();
             player.increaseSpeed();
             player.decreaseSpeed();
-            this.timeDiv()
+            this.timer()
             this.deleteBooster();
         }
     }
@@ -51,21 +51,16 @@ class Booster {
         this.boosterX = -20;
         this.boosterY = -20;
     }
-    timeDiv(){
-        let timeDiv = document.createElement("H1")
-        timeDiv.id = 'timeDiv'
-        timeDiv.style.backgroundImage = "linear-gradient(to bottom right, #FFD700, #272100)"
-        const main = document.getElementById('body')
-        main.appendChild(timeDiv)
-        this.reduceWidth()
-    }
-    async reduceWidth(){
+
+    async timer(){
         let timeDiv = document.getElementById('timeDiv')
+        timeDiv.style.width = '490px'
+        timeDiv.style.visibility = 'visible'
         for (let i = 0; i < 900; i++){
             await this.sleep(9)
             timeDiv.style.width = `${490- i*0.5}px`
         }
-        timeDiv.remove()
+        timeDiv.style.visibility = 'hidden'
     }
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

@@ -42,3 +42,13 @@ h1 {
 #scoreNumber{
     background-color: #eee;
 }
+#timeDiv{
+    visibility: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 490px;
+    margin: 3px;
+    background-image: linear-gradient(to bottom right, #FFD700, #272100);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    border: 5px solid black;
+}
