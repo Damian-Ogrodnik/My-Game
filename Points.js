@@ -13,10 +13,13 @@ class Points {
         if (newPoint){
             this.pointX = Math.random() * (this.cvs.width - this.pointSize);
             this.pointY = Math.random() * (this.cvs.height - this.pointSize);
-            for (let i = 0; i < blocks.length; i++) { //check if point is to close to blocks
+            for (let i = 0; i < blocks.length; i++) { //whork when point is to close to blocks
                 if (block.getDistance(this.pointX, this.pointY, blocks[i].blockX, blocks[i].blockY)< 40){
                     this.drawPoint('true')
                 }
+            }
+            if(block.getDistance(this.pointX, this.pointY,x, y) < 20){ //work when point is to close to player
+                this.drawPoint('true')
             }
         }
         ctx.beginPath();
@@ -35,7 +38,12 @@ class Points {
             score++;
             if (score % 2 == 0){enemies.createEnemy();}
             booster.deleteBooster();
-            if (score % 4 == 0){booster.drawBooster('true')}
+            if (score % 5 == 0){
+                booster.drawBooster('true')
+                if (score > 0) {
+                    booster.deleteBooster(true)
+                }
+            }
             block.createBlock();
             this.pointSound.play();
             this.drawPoint('true');

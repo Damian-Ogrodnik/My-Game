@@ -26,6 +26,9 @@ class Block {
         ctx.closePath();
     }
     createBlock(){
+        if (this.blocks.length > 15){
+            return;
+        }
         let blockSizeX
         let blockSizeY
         if (Math.random() > 0.5){ //random direction of block
@@ -39,14 +42,14 @@ class Block {
         let blockY = Math.random() * (this.cvs.height - blockSizeY);
         for (let i = 0; i < this.blocks.length; i++) {
             if (
-                (this.getDistance(blockX, blockY, this.blocks[i].blockX, this.blocks[i].blockY)< 30 ) ||
-                (this.getDistance(x, y, this.blocks[i].blockX, this.blocks[i].blockY) < 30  ) ||
-                (this.getDistance(this.pointX, this.pointY, this.blocks[i].blockX, this.blocks[i].blockY) < 30)
+                (this.getDistance(blockX, blockY, this.blocks[i].blockX, this.blocks[i].blockY)< 30 ) || //checks distance between  blocks
+                (this.getDistance(x, y, this.blocks[i].blockX, this.blocks[i].blockY) < 30  ) || //checks distance beetwen block and player
+                (this.getDistance(this.pointX, this.pointY, this.blocks[i].blockX, this.blocks[i].blockY) < 30) //check distance beetwen block and point
                 ) {
                 return;
             }
         }
-        let blockInfo = { //info about enemies
+        let blockInfo = { //info about block
             blockX: blockX,
             blockY: blockY,
             blockSizeX: blockSizeX,

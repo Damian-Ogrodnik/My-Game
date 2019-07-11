@@ -13,7 +13,7 @@ class Booster {
         if (newBooster) {
             this.boosterX = Math.random() * (this.cvs.width - this.boosterSize);
             this.boosterY = Math.random() * (this.cvs.height - this.boosterSize);
-            for (let i = 0; i < blocks.length; i++) { //check if point is to close to blocks
+            for (let i = 0; i < blocks.length; i++) { //check if booster is to close to blocks
                 if (block.getDistance(this.boosterX, this.boosterY, blocks[i].blockX, blocks[i].blockY) < 40) {
                     this.drawBooster('true');
                 }
@@ -47,7 +47,10 @@ class Booster {
         };
         return boosterConfig;
     }
-    deleteBooster(){
+    async deleteBooster(delay){
+        if(delay){
+            await this.sleep(5000)
+        }
         this.boosterX = -20;
         this.boosterY = -20;
     }
