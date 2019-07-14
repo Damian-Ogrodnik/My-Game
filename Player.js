@@ -67,6 +67,7 @@ class Player {
     }
     async decreaseSpeed() {
         await this.sleep(9000)
+        booster.boosterOF();
         this.playerSpeed = 3;
     }
     sleep(ms) {
