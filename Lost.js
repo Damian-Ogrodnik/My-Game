@@ -27,3 +27,6 @@ class Lost {
         elem.addEventListener('click', () => document.location.reload())
     }
 }
+
+export var lol = 100
+var lol2 = 120
